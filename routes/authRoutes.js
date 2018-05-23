@@ -13,4 +13,8 @@ module.exports = (app) => {
     // here has code info available, passport will exchange the code
     // for user profile
     app.get('/auth/auth/google/callback', passport.authenticate('google'));
+
+    app.get('/api/current_user', (req, res) => {
+        res.send(req.user);
+    });
 };
