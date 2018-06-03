@@ -12,11 +12,18 @@ module.exports = (app) => {
     // when user get direct back to callback from signin with google
     // here has code info available, passport will exchange the code
     // for user profile
-    app.get('/auth/auth/google/callback', passport.authenticate('google'));
+    app.get(
+        '/auth/auth/google/callback',
+        passport.authenticate('google'),
+        (req, res) => {
+            res.redirect('/surveys');
+        }
+    );
 
     app.get('/api/logout', (req, res) => {
         req.logout();
-        res.send(req.user); // req.user null
+        // res.send(req.user); // req.user null
+        res.redirect('/');
     });
 
     app.get('/api/current_user', (req, res) => {

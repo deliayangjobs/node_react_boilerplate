@@ -3,13 +3,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import reduxThunk from 'redux-thunk';
 
 import App from './components/App';
 import reducers from './reducers';
 
 // arg1 - all the reducers in app
 // arg2 - initial state of app
-const store = createStore(reducers, {}, applyMiddleware());
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
     // <App /> as child of <Provider>
