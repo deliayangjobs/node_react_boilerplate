@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { reduxForm } from 'redux-form';
 import SurveyForm from './SurveyForm';
 import SurveyFormReview from './SurveyFormReview';
 
@@ -9,7 +10,7 @@ class SurveyNew extends Component {
         if (this.state.showFormReview) {
             return (
                 <SurveyFormReview
-                    onCancel={() => this.setState({ showFormReview: false })} 
+                    onCancel={() => this.setState({ showFormReview: false })}
                 />
             );
         }
@@ -25,4 +26,8 @@ class SurveyNew extends Component {
     }
 }
 
-export default SurveyNew;
+// back to step 1, still see user inputs
+// cancel to add survey again, clear user inputs
+export default reduxForm({
+    form: 'surveyForm'
+})(SurveyNew);

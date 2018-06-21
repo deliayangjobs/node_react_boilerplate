@@ -38,7 +38,7 @@ function validate(values) {
     });
 
     // when app initialize will call validate once
-    errors.emails = validateEmails(values.emails || '');
+    errors.recipients = validateEmails(values.recipients || '');
 
     return errors;
 }
